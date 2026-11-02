@@ -1,6 +1,6 @@
 {
   "name": "dsh-credential-vault",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "DSH Web 凭证库：本地加密保存密码与 API Token，浏览器查看需主密码，Agent 可通过 vaultctl 查阅。｜ Credential vault for DSH Web: encrypted local store for passwords and API tokens, master-password-gated browser view, agent CLI access.",
   "license": "MIT",
@@ -39,6 +39,42 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiaoran0829/dsh-credential-vault.git"
+  },
+  "dshWorkshop": {
+    "schema": "omdsh-workshop-package/v1",
+    "type": "plugin",
+    "integration": {
+      "protocol": "harness-cordis",
+      "artifact": "index.js"
+    },
+    "install": {
+      "mode": "guided",
+      "adapter": "third-party",
+      "failurePolicy": "manual",
+      "touchesCurrentBeforeActivation": false
+    },
+    "lifecycle": {
+      "activation": "restart-profile",
+      "dispose": "unknown"
+    },
+    "permissions": [
+      "filesystem:write",
+      "crypto:use",
+      "http:route",
+      "process:env"
+    ],
+    "capability": {
+      "id": "credential-vault.view",
+      "kind": "ui",
+      "invocation": "打开 DSH Web 会话顶栏「凭证库」tab，设置或输入主密码解锁，列出条目元数据",
+      "expected": "顶栏出现「凭证库」tab；未解锁时路由返回 401 locked；解锁后返回条目列表（不含明文 secret）"
+    },
+    "evidence": {
+      "install": null,
+      "failureIsolation": null,
+      "hotReload": null,
+      "remove": null
+    }
   },
   "homepage": "https://github.com/xiaoran0829/dsh-credential-vault#readme",
   "bugs": {
