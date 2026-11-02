@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Credential Vault",
+    "description": "Encrypted local store for passwords and API tokens: the browser view requires a master password, the agent reads through vaultctl; manual entry, expiry dates and reminders included."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "dsh-credential-vault",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Credential vault for DSH Web: master-password-gated browser view over an encrypted local store that the agent reads through vaultctl.",
+  "license": "MIT",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./vault": "./vault.js",
+    "./vaultctl": "./vaultctl.mjs",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "vault.js",
+    "vaultctl.mjs",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoran0829/dsh-credential-vault.git"
+  },
+  "homepage": "https://github.com/xiaoran0829/dsh-credential-vault#readme",
+  "bugs": {
+    "url": "https://github.com/xiaoran0829/dsh-credential-vault/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "dsh",
+    "deepseek-harness",
+    "cordis-plugin",
+    "vault",
+    "credentials",
+    "password-manager",
+    "api-token"
+  ]
+}

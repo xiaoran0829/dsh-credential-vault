@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "凭证库",
+    "description": "本地加密保存密码与 API Token：浏览器查看需先设主密码，Agent 可通过 vaultctl 无限制查阅；支持手动录入、有效期与到期提醒。"
+  }
+}
