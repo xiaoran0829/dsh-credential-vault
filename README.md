@@ -49,10 +49,12 @@ node <install-dir>/vaultctl.mjs add --title "..." --secret "..." --site "..." --
 
 ## 接入方式（引导接入）
 
-- 形态：DSH Web Cordis 插件（`dsh.bundle.patch` + `dsh.client`），在 DSH Connection 上注册需登录态的 Fetch 路由。
+- 形态：DSH Web Cordis 插件（`dsh.bundle.patch` + `dsh.client`），注册需登录态的 HTTP 路由。
+- 路由注册做了跨版本兼容：0.2.x 用 `ctx.connection.fetch.register`，0.1.0-rc.6 用 `ctx.webServer.register`（Node 风格 handler）；两者都不存在时插件保持加载、跳过路由并打一条 warn，不会拖垮宿主。
 - `package.json#dshWorkshop` 声明为 `harness-cordis` + `third-party` adapter 的 guided 接入；当前没有事务安装、没有 Registry 安装权限，也没有可执行安装步骤。
 - 安装或升级插件后需重启 DSH Web 的 profile 才生效。
-- 未在 Workshop 官方基线 `@deepseek-ai/dsh@0.1.0-rc.6` 上验证；`evidence` 的安装、失败隔离、热重载、卸载四项均为 `null`（尚无证据）。
+- 已对 `@deepseek-ai/dsh@0.1.0-rc.6` 做静态适配（`webServer.register` 路径）与 Node 级冒烟；未跑通 rc.6 的完整 Web 启动（该环境核心插件树无法启动），因此仍无基线生命周期证据。
+- `evidence` 的安装、失败隔离、热重载、卸载四项均为 `null`（尚无证据）。
 
 ## 权限与外部副作用
 
