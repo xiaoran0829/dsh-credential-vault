@@ -1,8 +1,8 @@
 {
   "name": "dsh-credential-vault",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
-  "description": "Credential vault for DSH Web: master-password-gated browser view over an encrypted local store that the agent reads through vaultctl.",
+  "description": "DSH Web 凭证库：本地加密保存密码与 API Token，浏览器查看需主密码，Agent 可通过 vaultctl 查阅。｜ Credential vault for DSH Web: encrypted local store for passwords and API tokens, master-password-gated browser view, agent CLI access.",
   "license": "MIT",
   "main": "index.js",
   "exports": {
